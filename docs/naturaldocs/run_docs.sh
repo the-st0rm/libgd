@@ -60,7 +60,7 @@ mkdir tmp
 perl nobgd.pl ../../src/ tmp/
 
 # Add the external docs.
-cp license.txt tmp/
+echo "Title: License" | cat - ../../COPYING > tmp/license.txt
 sed -e "s/@VERSION@/$VERSION/g" preamble.txt > tmp/preamble.txt
 # ^^^ hack to get the version number in the docs.
 
@@ -68,7 +68,8 @@ sed -e "s/@VERSION@/$VERSION/g" preamble.txt > tmp/preamble.txt
 $(nd) --rebuild --rebuild-output --documented-only \
     -i tmp/ \
     -o html html  \
-    --project project/
+    --project project/ \
+    -s Default libgd
 
 # And cleanup the temp files.
 rm -rf Data tmp
