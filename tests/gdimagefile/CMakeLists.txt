@@ -1,0 +1,5 @@
+LIST(APPEND TESTS_FILES
+	gdnametest
+)
+
+ADD_GD_TESTS()
